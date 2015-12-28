@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -83,6 +85,16 @@ public class GuestBookServiceTest {
         guestBookService.countComment();
 
         Assert.assertThat(guestBookService.countComment(),is(0));
+    }
+
+    @Test
+    public void getAllCommentList() throws Exception {
+
+        int commentListSize = guestBookService.countComment();
+
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+
+        Assert.assertThat(guestBookModelList.size(),is(commentListSize));
     }
 }
 

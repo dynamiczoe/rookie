@@ -5,6 +5,8 @@ import com.nhnent.basecamp.repository.GuestBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by dynamiczoe on 15. 12. 28..
  */
@@ -28,5 +30,11 @@ public class GuestBookServiceImpl implements GuestBookService {
     public void addNewComment(GuestBookModel guestBookModel) {
 
         guestBookRepository.insertNewComment(guestBookModel);
+    }
+
+    @Override
+    public List<GuestBookModel> getAllCommentList() {
+        return guestBookRepository.getAllCommentList();
+
     }
 }

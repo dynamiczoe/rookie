@@ -2,6 +2,8 @@ package com.nhnent.basecamp.service;
 
 import com.nhnent.basecamp.model.GuestBookModel;
 
+import java.util.List;
+
 /**
  * Created by dynamiczoe on 15. 12. 28..
  */
@@ -12,4 +14,6 @@ public interface GuestBookService {
     int countComment();
 
     void addNewComment(GuestBookModel guestBookModel);
+
+    List<GuestBookModel> getAllCommentList();
 }

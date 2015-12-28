@@ -3,6 +3,8 @@ package com.nhnent.basecamp.repository;
 import com.nhnent.basecamp.model.GuestBookModel;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by dynamiczoe on 15. 12. 28..
  */
@@ -14,4 +16,7 @@ public interface GuestBookRepository {
     int count();
 
     void insertNewComment(GuestBookModel guestBookModel);
+
+    List<GuestBookModel> getAllCommentList();
+
 }
