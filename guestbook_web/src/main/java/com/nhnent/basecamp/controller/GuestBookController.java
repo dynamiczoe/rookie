@@ -28,9 +28,10 @@ public class GuestBookController {
         guestBookService.addNewComment(guestBookModel);
     }
 
-    @RequestMapping(value = "/comment-getList")
+    @RequestMapping(value = "/index")
     public List<GuestBookModel> getCommentList() {
-        return guestBookService.getAllCommentList();
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+        return guestBookModelList;
     }
 
     @RequestMapping(value = "/comment-modify")

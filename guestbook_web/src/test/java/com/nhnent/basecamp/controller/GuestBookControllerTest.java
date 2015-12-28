@@ -70,7 +70,7 @@ public class GuestBookControllerTest extends TestCase {
 
     @Test
     public void getListControllerTest() throws Exception {
-        mockMvc.perform(post("/comment-getList"))
+        mockMvc.perform(post("/index"))
                 .andDo(print());
     }
 
