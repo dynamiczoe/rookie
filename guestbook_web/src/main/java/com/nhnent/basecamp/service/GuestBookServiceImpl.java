@@ -28,7 +28,6 @@ public class GuestBookServiceImpl implements GuestBookService {
 
     @Override
     public void addNewComment(GuestBookModel guestBookModel) {
-
         guestBookRepository.insertNewComment(guestBookModel);
     }
 

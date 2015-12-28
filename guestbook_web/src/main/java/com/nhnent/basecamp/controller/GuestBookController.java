@@ -30,4 +30,15 @@ public class GuestBookController {
     public void deleteAllComment() {
         guestBookService.deleteAllComment();
     }
+
+    @RequestMapping(value = "/comment-modify")
+    public @ResponseBody String modifyComment(GuestBookModel guestBookModel) {
+
+        if(guestBookService.confirmAuth(guestBookModel.getId(),guestBookModel.getPw())){
+            guestBookService.modifyComment(guestBookModel);
+            return "success";
+        }else{
+            return "fail";
+        }
+    }
 }
