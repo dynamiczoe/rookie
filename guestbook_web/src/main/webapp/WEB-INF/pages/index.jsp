@@ -28,7 +28,7 @@
     <div class="col-md-12">
       <div class="widget-area no-padding blank">
         <div class="status-upload">
-          <form>
+          <form method="POST" action="comment-add">
             <textarea name="content" placeholder="하고 싶은 말 " ></textarea>
 
             <div id="input-email-group" class="input-group col-md-4">
@@ -37,7 +37,7 @@
             </div>
             <div id="input-password-group" class="input-group col-md-4">
               <span class="input-group-addon" id="user-password">PW</span>
-              <input type="text" class="form-control" placeholder="password" name="password" aria-describedby="basic-addon1">
+              <input type="password" class="form-control" placeholder="password" name="pw" aria-describedby="basic-addon1">
             </div>
             <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> 등록</button>
           </form>

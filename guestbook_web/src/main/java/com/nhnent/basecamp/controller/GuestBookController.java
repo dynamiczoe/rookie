@@ -24,8 +24,10 @@ public class GuestBookController {
     private GuestBookService guestBookService;
 
     @RequestMapping(value = "/comment-add",method = RequestMethod.POST)
-    public void addComment(GuestBookModel guestBookModel) {
+    public String addComment(GuestBookModel guestBookModel) {
         guestBookService.addNewComment(guestBookModel);
+
+        return "redirect:index";
     }
 
     @RequestMapping(value = "/index")
