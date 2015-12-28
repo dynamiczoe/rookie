@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by dynamiczoe on 15. 12. 28..
  */
@@ -26,9 +28,9 @@ public class GuestBookController {
         guestBookService.addNewComment(guestBookModel);
     }
 
-    @RequestMapping(value = "/comment-deleteAll")
-    public void deleteAllComment() {
-        guestBookService.deleteAllComment();
+    @RequestMapping(value = "/comment-getList")
+    public List<GuestBookModel> getCommentList() {
+        return guestBookService.getAllCommentList();
     }
 
     @RequestMapping(value = "/comment-modify")

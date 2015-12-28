@@ -16,6 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -65,6 +66,12 @@ public class GuestBookControllerTest extends TestCase {
         content = result.getResponse().getContentAsString();
         Assert.assertThat(content,is("success"));
 
+    }
+
+    @Test
+    public void getListControllerTest() throws Exception {
+        mockMvc.perform(post("/comment-getList"))
+                .andDo(print());
     }
 
 }
