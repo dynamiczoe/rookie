@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nhnent.basecamp.repository.GuestBookRepository">
+    <select id="count" resultType="int" >
+        SELECT count(*) FROM t_guestbook;
+    </select>
+
+    <insert id="insertNewComment" parameterType="com.nhnent.basecamp.model.GuestBookModel" >
+        INSERT INTO t_guestbook(email,pw,content)
+        VALUES (#{email},#{pw},#{content})
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM t_guestbook
+    </delete>
+</mapper>
