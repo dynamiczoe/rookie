@@ -22,4 +22,6 @@ public interface GuestBookService {
     GuestBookModel getCommentById(int commentId);
 
     void modifyComment(GuestBookModel guestBookModel);
+
+    void deleteCommentById(int id);
 }

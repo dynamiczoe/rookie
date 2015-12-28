@@ -8,7 +8,7 @@
     </select>
 
     <select id="getAllCommentList" resultType="com.nhnent.basecamp.model.GuestBookModel" >
-        SELECT * FROM t_guestbook;
+        SELECT * FROM t_guestbook ORDER BY createDate DESC;
     </select>
 
     <select id="comparePasswordToId" resultType="int" >
@@ -26,6 +26,10 @@
 
     <delete id="deleteAll">
         DELETE FROM t_guestbook
+    </delete>
+
+    <delete id="deleteById">
+        DELETE FROM t_guestbook WHERE id = #{id}
     </delete>
 
     <update id="updateComment">

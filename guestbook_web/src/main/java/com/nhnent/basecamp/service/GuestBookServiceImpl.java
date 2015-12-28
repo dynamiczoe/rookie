@@ -61,4 +61,9 @@ public class GuestBookServiceImpl implements GuestBookService {
     public void modifyComment(GuestBookModel guestBookModel) {
         guestBookRepository.updateComment(guestBookModel);
     }
+
+    @Override
+    public void deleteCommentById(int id) {
+        guestBookRepository.deleteById(id);
+    }
 }

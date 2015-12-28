@@ -155,5 +155,22 @@ public class GuestBookServiceTest {
         Assert.assertThat(originGuestBookModel.getId(),is(modifiedGuestBookModel.getId()));
         Assert.assertThat(originGuestBookModel.getContent(), is(modifiedGuestBookModel.getContent()));
     }
+
+    @Test
+    public void deleteCommentByIdTest() throws Exception {
+
+        mockMvc.perform(post("/comment-add")
+                .param("email","why@naver.com")
+                .param("pw","any")
+                .param("content","I will be deleted..T.T "))
+                .andExpect(status().isOk());
+
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+        GuestBookModel originGuestBookModel = guestBookModelList.get(guestBookModelList.size() - 1);
+        guestBookService.deleteCommentById(originGuestBookModel.getId());
+        GuestBookModel deletedGuestBookModel = guestBookService.getCommentById(originGuestBookModel.getId());
+
+        Assert.assertEquals(deletedGuestBookModel,null);
+    }
 }
 

@@ -24,4 +24,6 @@ public interface GuestBookRepository {
     GuestBookModel findCommentById(int commentId);
 
     void updateComment(GuestBookModel guestBookModel);
+
+    void deleteById(int id);
 }
