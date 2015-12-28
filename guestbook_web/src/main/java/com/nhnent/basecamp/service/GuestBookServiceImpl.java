@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by dynamiczoe on 15. 12. 28..
@@ -27,10 +28,19 @@ public class GuestBookServiceImpl implements GuestBookService {
     }
 
     @Override
-    public void addNewComment(GuestBookModel guestBookModel) {
-        guestBookRepository.insertNewComment(guestBookModel);
+    public void addNewComment(GuestBookModel guestBookModel) throws Exception {
+        if(isEmail(guestBookModel.getEmail())) {
+            guestBookRepository.insertNewComment(guestBookModel);
+        }else{
+            throw new Exception("invalid email");
+        }
     }
 
+    public boolean isEmail(String email) {
+        if (email==null) return false;
+        boolean b = Pattern.matches("[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+", email.trim());
+        return b;
+    }
     @Override
     public List<GuestBookModel> getAllCommentList() {
         return guestBookRepository.getAllCommentList();

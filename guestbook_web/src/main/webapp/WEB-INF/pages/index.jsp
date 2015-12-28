@@ -58,7 +58,7 @@
               <div class="panel-body">
                 <header class="text-left">
                   <div class="comment-user"><i class="fa fa-user"></i>${guestBookModel.email}</div>
-                  <time class="comment-date" datetime="${guestBookModel.lastUpdate}"><i class="fa fa-clock-o"></i></time>
+                  <time class="comment-date" datetime="${guestBookModel.lastUpdate}"><i class="fa fa-clock-o"></i>${guestBookModel.lastUpdate}</time>
                 </header>
                 <div class="comment-post">
                   <p>
@@ -134,7 +134,7 @@
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
   }
-  
+
   $( "#insert-comment" ).submit(function( event ) {
     if ( isEmail($( "input:first" ).val()) ) {
       return;

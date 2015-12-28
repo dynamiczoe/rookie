@@ -13,7 +13,7 @@ public interface GuestBookService {
 
     int countComment();
 
-    void addNewComment(GuestBookModel guestBookModel);
+    void addNewComment(GuestBookModel guestBookModel) throws Exception;
 
     List<GuestBookModel> getAllCommentList();
 
