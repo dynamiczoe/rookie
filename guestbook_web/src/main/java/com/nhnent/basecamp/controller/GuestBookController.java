@@ -26,9 +26,8 @@ public class GuestBookController {
         guestBookService.addNewComment(guestBookModel);
     }
 
-    @RequestMapping(value = "/comment-count")
-    public @ResponseBody
-    int countComment() {
-        return guestBookService.countComment();
+    @RequestMapping(value = "/comment-deleteAll")
+    public void deleteAllComment() {
+        guestBookService.deleteAllComment();
     }
 }

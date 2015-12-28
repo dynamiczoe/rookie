@@ -61,5 +61,28 @@ public class GuestBookServiceTest {
 
         Assert.assertThat(afterCount-beforeCount,is(1));
     }
+
+    @Test
+    public void deleteAllCommentTest() throws Exception {
+
+        int beforeCount = guestBookService.countComment();
+
+        mockMvc.perform(post("/comment-add")
+                .param("email","nhnent@naver.com")
+                .param("pw","any")
+                .param("content","Junit 픽스쳐 코멘트"))
+                .andExpect(status().isOk());
+
+        int afterCount = guestBookService.countComment();
+
+        Assert.assertThat(afterCount-beforeCount,is(1));
+
+        mockMvc.perform(post("/comment-deleteAll"))
+                .andExpect(status().isOk());
+
+        guestBookService.countComment();
+
+        Assert.assertThat(guestBookService.countComment(),is(0));
+    }
 }
 
