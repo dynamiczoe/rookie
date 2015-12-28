@@ -27,4 +27,11 @@
     <delete id="deleteAll">
         DELETE FROM t_guestbook
     </delete>
+
+    <update id="updateComment">
+        UPDATE
+          t_guestbook
+        SET email=#{email}, content=#{content}, lastUpdate = CURRENT_TIMESTAMP
+        WHERE id=#{id}
+    </update>
 </mapper>

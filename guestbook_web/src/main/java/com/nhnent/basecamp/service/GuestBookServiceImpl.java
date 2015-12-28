@@ -56,4 +56,9 @@ public class GuestBookServiceImpl implements GuestBookService {
 
         return guestBookRepository.findCommentById(commentId);
     }
+
+    @Override
+    public void modifyComment(GuestBookModel guestBookModel) {
+        guestBookRepository.updateComment(guestBookModel);
+    }
 }

@@ -136,5 +136,24 @@ public class GuestBookServiceTest {
         Assert.assertThat(guestBookModel1.getEmail(),is(guestBookModel2.getEmail()));
         Assert.assertThat(guestBookModel1.getCreateDate(),is(guestBookModel2.getCreateDate()));
     }
+
+    @Test
+    public void modifyCommentTest() throws Exception {
+
+        mockMvc.perform(post("/comment-add")
+                .param("email","pm2@naver.com")
+                .param("pw","yayaya")
+                .param("content","can you feel my heartbeat ? ha~bet!"))
+                .andExpect(status().isOk());
+
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+        GuestBookModel originGuestBookModel = guestBookModelList.get(guestBookModelList.size() - 1);
+        originGuestBookModel.setContent("sorry,, I can't.");
+        guestBookService.modifyComment(originGuestBookModel);
+        GuestBookModel modifiedGuestBookModel = guestBookService.getCommentById(originGuestBookModel.getId());
+
+        Assert.assertThat(originGuestBookModel.getId(),is(modifiedGuestBookModel.getId()));
+        Assert.assertThat(originGuestBookModel.getContent(), is(modifiedGuestBookModel.getContent()));
+    }
 }
 

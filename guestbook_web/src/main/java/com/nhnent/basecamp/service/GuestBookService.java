@@ -20,4 +20,6 @@ public interface GuestBookService {
     boolean confirmAuth(int commentId, String password);
 
     GuestBookModel getCommentById(int commentId);
+
+    void modifyComment(GuestBookModel guestBookModel);
 }

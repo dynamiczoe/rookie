@@ -22,4 +22,6 @@ public interface GuestBookRepository {
     int comparePasswordToId(GuestBookModel guestBookModel);
 
     GuestBookModel findCommentById(int commentId);
+
+    void updateComment(GuestBookModel guestBookModel);
 }
