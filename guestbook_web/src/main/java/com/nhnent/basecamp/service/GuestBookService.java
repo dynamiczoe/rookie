@@ -16,4 +16,6 @@ public interface GuestBookService {
     void addNewComment(GuestBookModel guestBookModel);
 
     List<GuestBookModel> getAllCommentList();
+
+    boolean confirmAuth(int commentId, String password);
 }

@@ -96,5 +96,24 @@ public class GuestBookServiceTest {
 
         Assert.assertThat(guestBookModelList.size(),is(commentListSize));
     }
+
+    @Test
+    public void confirmAuth() throws Exception {
+
+        mockMvc.perform(post("/comment-add")
+                .param("email","nhnent@naver.com")
+                .param("pw","any")
+                .param("content","Junit 픽스쳐 코멘트"))
+                .andExpect(status().isOk());
+
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+        GuestBookModel guestBookModel = guestBookModelList.get(guestBookModelList.size()-1);
+        int commentId = guestBookModel.getId();
+        String password = guestBookModel.getPw();
+        String incorrectPW = "jejuman";
+
+        Assert.assertThat(guestBookService.confirmAuth(commentId, password),is(true));
+        Assert.assertThat(guestBookService.confirmAuth(commentId, incorrectPW), is(false));
+    }
 }
 

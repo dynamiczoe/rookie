@@ -37,4 +37,17 @@ public class GuestBookServiceImpl implements GuestBookService {
         return guestBookRepository.getAllCommentList();
 
     }
+
+    @Override
+    public boolean confirmAuth(int commentId, String password) {
+        boolean auth = false;
+        GuestBookModel guestBookModel = new GuestBookModel();
+        guestBookModel.setId(commentId);
+        guestBookModel.setPw(password);
+
+        if(guestBookRepository.comparePasswordToId(guestBookModel) > 0){
+            auth = true;
+        }
+        return auth;
+    }
 }

@@ -11,6 +11,10 @@
         SELECT * FROM t_guestbook;
     </select>
 
+    <select id="comparePasswordToId" resultType="int" >
+        SELECT count(*) FROM t_guestbook WHERE id=#{id} AND pw = #{pw};
+    </select>
+
     <insert id="insertNewComment" parameterType="com.nhnent.basecamp.model.GuestBookModel" >
         INSERT INTO t_guestbook(email,pw,content)
         VALUES (#{email},#{pw},#{content})

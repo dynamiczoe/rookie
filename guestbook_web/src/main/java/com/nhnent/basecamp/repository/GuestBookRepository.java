@@ -19,4 +19,6 @@ public interface GuestBookRepository {
 
     List<GuestBookModel> getAllCommentList();
 
+    int comparePasswordToId(GuestBookModel guestBookModel);
+
 }
