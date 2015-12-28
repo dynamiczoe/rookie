@@ -210,6 +210,21 @@ body .no-padding {
     margin:4px;
 }
 
+#modify-form-email{
+    float:left;
+    margin:4px;
+}
+
+#modify-form-pw{
+    float:left;
+    margin:4px;
+}
+
+.modify-form-content{
+    width: 100%;
+    height: 80px;
+}
+
 
 
 
