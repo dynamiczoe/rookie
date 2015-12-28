@@ -18,4 +18,6 @@ public interface GuestBookService {
     List<GuestBookModel> getAllCommentList();
 
     boolean confirmAuth(int commentId, String password);
+
+    GuestBookModel getCommentById(int commentId);
 }

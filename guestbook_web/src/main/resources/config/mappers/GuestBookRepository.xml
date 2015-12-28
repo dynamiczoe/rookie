@@ -15,6 +15,10 @@
         SELECT count(*) FROM t_guestbook WHERE id=#{id} AND pw = #{pw};
     </select>
 
+    <select id="findCommentById" resultType="com.nhnent.basecamp.model.GuestBookModel" >
+        SELECT * FROM t_guestbook WHERE id=#{commentId};
+    </select>
+
     <insert id="insertNewComment" parameterType="com.nhnent.basecamp.model.GuestBookModel" >
         INSERT INTO t_guestbook(email,pw,content)
         VALUES (#{email},#{pw},#{content})

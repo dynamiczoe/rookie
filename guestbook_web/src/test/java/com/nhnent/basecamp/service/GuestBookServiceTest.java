@@ -64,31 +64,31 @@ public class GuestBookServiceTest {
         Assert.assertThat(afterCount-beforeCount,is(1));
     }
 
+//    @Test
+//    public void deleteAllCommentTest() throws Exception {
+//
+//        int beforeCount = guestBookService.countComment();
+//
+//        mockMvc.perform(post("/comment-add")
+//                .param("email","nhnent@naver.com")
+//                .param("pw","any")
+//                .param("content","Junit 픽스쳐 코멘트"))
+//                .andExpect(status().isOk());
+//
+//        int afterCount = guestBookService.countComment();
+//
+//        Assert.assertThat(afterCount-beforeCount,is(1));
+//
+//        mockMvc.perform(post("/comment-deleteAll"))
+//                .andExpect(status().isOk());
+//
+//        guestBookService.countComment();
+//
+//        Assert.assertThat(guestBookService.countComment(),is(0));
+//    }
+
     @Test
-    public void deleteAllCommentTest() throws Exception {
-
-        int beforeCount = guestBookService.countComment();
-
-        mockMvc.perform(post("/comment-add")
-                .param("email","nhnent@naver.com")
-                .param("pw","any")
-                .param("content","Junit 픽스쳐 코멘트"))
-                .andExpect(status().isOk());
-
-        int afterCount = guestBookService.countComment();
-
-        Assert.assertThat(afterCount-beforeCount,is(1));
-
-        mockMvc.perform(post("/comment-deleteAll"))
-                .andExpect(status().isOk());
-
-        guestBookService.countComment();
-
-        Assert.assertThat(guestBookService.countComment(),is(0));
-    }
-
-    @Test
-    public void getAllCommentList() throws Exception {
+    public void getAllCommentListTest() throws Exception {
 
         int commentListSize = guestBookService.countComment();
 
@@ -98,7 +98,7 @@ public class GuestBookServiceTest {
     }
 
     @Test
-    public void confirmAuth() throws Exception {
+    public void confirmAuthTest() throws Exception {
 
         mockMvc.perform(post("/comment-add")
                 .param("email","nhnent@naver.com")
@@ -114,6 +114,27 @@ public class GuestBookServiceTest {
 
         Assert.assertThat(guestBookService.confirmAuth(commentId, password),is(true));
         Assert.assertThat(guestBookService.confirmAuth(commentId, incorrectPW), is(false));
+    }
+
+    @Test
+    public void getCommentByIdTest() throws Exception {
+
+        mockMvc.perform(post("/comment-add")
+                .param("email","nhnent@naver.com")
+                .param("pw","any")
+                .param("content","Junit 픽스쳐 코멘트"))
+                .andExpect(status().isOk());
+
+        List<GuestBookModel> guestBookModelList = guestBookService.getAllCommentList();
+        GuestBookModel guestBookModel1 = guestBookModelList.get(guestBookModelList.size() - 1);
+        int commentId = guestBookModel1.getId();
+
+        GuestBookModel guestBookModel2 = guestBookService.getCommentById(commentId);
+
+        Assert.assertThat(guestBookModel1.getContent(),is(guestBookModel2.getContent()));
+        Assert.assertThat(guestBookModel1.getId(),is(guestBookModel2.getId()));
+        Assert.assertThat(guestBookModel1.getEmail(),is(guestBookModel2.getEmail()));
+        Assert.assertThat(guestBookModel1.getCreateDate(),is(guestBookModel2.getCreateDate()));
     }
 }
 

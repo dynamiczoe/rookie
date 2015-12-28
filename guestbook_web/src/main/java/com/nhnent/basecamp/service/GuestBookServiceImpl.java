@@ -50,4 +50,10 @@ public class GuestBookServiceImpl implements GuestBookService {
         }
         return auth;
     }
+
+    @Override
+    public GuestBookModel getCommentById(int commentId) {
+
+        return guestBookRepository.findCommentById(commentId);
+    }
 }
